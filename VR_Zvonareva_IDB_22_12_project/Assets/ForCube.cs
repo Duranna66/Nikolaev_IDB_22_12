@@ -11,8 +11,7 @@ public class ForCube : MonoBehaviour
     public Text x;
     public float Speed = 10f;
 
-    public GameObject cam;
-    public GameObject bcam;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +42,7 @@ public class ForCube : MonoBehaviour
 
         if (c <= 0)
         {
-            cam.SetActive(true);
-            bcam.SetActive(false);
+           
             this.gameObject.SetActive(false);
             x.text = "Game Over";
         }
@@ -63,10 +61,30 @@ public class ForCube : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("CEN");
+        Debug.Log("CET");
         this.gameObject.GetComponent<Renderer>().material.color = Color.white;
 
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        Debug.Log("CS");
+        
+    }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("TE");
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("TX");
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log("TS");
+    }
+    public void heal()
+    {
+        c = 5;
+    }
 }
